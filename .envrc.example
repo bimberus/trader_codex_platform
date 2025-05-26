@@ -1,0 +1,27 @@
+# API Configuration
+export API_HOST=0.0.0.0
+export API_PORT=8000
+export API_DEBUG=true
+
+# Database Configuration
+export POSTGRES_USER=postgres
+export POSTGRES_PASSWORD=postgres
+export POSTGRES_DB=trader_codex
+export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/trader_codex
+
+# JWT Configuration
+export JWT_SECRET_KEY=your-secret-key
+export JWT_ALGORITHM=HS256
+export ACCESS_TOKEN_EXPIRE_MINUTES=30
+
+# Cloudflare Configuration
+export CLOUDFLARE_TUNNEL_TOKEN=your-tunnel-token
+
+# FreqTrade Configuration
+export FREQTRADE_API_SERVER=http://localhost:8080
+export FREQTRADE_USERNAME=freqtrader
+export FREQTRADE_PASSWORD=password
+
+# Monitoring Configuration
+export GRAFANA_ADMIN_PASSWORD=admin
+export PROMETHEUS_RETENTION_DAYS=15
