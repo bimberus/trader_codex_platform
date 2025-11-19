@@ -1,8 +1,8 @@
-version: '3.8'
-
 services:
   backend:
     build: ./backend
+    ports:
+      - "8000:8000"
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/trader_codex
     depends_on:
@@ -23,9 +23,12 @@ services:
       - POSTGRES_DB=trader_codex
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - prometheus_data:/prometheus
 
   grafana:
     image: grafana/grafana:latest
+    ports:
+      - "3001:3000"
     volumes:
       - ./grafana/provisioning:/etc/grafana/provisioning
       - ./grafana/dashboards:/var/lib/grafana/dashboards
@@ -37,6 +40,28 @@ services:
     volumes:
       - ./prometheus:/etc/prometheus
       - prometheus_data:/prometheus
+
+  freqtrade:
+    image: freqtradeorg/freqtrade:stable
+    container_name: freqtrade
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./freqtrade/user_data:/freqtrade/user_data
+      - ./freqtrade/config.json:/freqtrade/config.json
+    command: >
+      trade
+      --logfile /freqtrade/user_data/logs/freqtrade.log
+      --db-url sqlite:////freqtrade/user_data/tradesv3.sqlite
+      --config /freqtrade/config.json
+      --strategy SampleStrategy
+    restart: unless-stopped
+    environment:
+      - FREQTRADE__API_SERVER__ENABLED=true
+      - FREQTRADE__API_SERVER__LISTEN_IP_ADDRESS=0.0.0.0
+      - FREQTRADE__API_SERVER__LISTEN_PORT=8080
+      - FREQTRADE__API_SERVER__USERNAME=admin
+      - FREQTRADE__API_SERVER__PASSWORD=freqtrader123
 
 volumes:
   postgres_data:

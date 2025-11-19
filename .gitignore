@@ -31,3 +31,16 @@ dist/
 build/
 *.log
 .DS_Store
+
+# Freqtrade sensitive data
+freqtrade/.env
+freqtrade/config.json
+freqtrade/user_data/logs/*
+freqtrade/user_data/*.sqlite
+freqtrade/user_data/*.sqlite-shm
+freqtrade/user_data/*.sqlite-wal
+freqtrade/user_data/data/*
+freqtrade/user_data/plot/*
+freqtrade/user_data/backtest_results/*
+!freqtrade/user_data/strategies/
+!freqtrade/user_data/strategies/*.py

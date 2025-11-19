@@ -1,4 +1,5 @@
-from pydantic import BaseSettings, PostgresDsn
+from pydantic_settings import BaseSettings
+from pydantic import PostgresDsn
 from typing import List
 
 class Settings(BaseSettings):
@@ -10,17 +11,17 @@ class Settings(BaseSettings):
     API_PORT: int = 8000
     API_DEBUG: bool = False
     
-    DATABASE_URL: PostgresDsn
+    DATABASE_URL: str = "postgresql://postgres:postgres@db:5432/trader_codex"
     
-    JWT_SECRET_KEY: str
+    JWT_SECRET_KEY: str = "secret-key-change-in-production"
     JWT_ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     
     CORS_ORIGINS: List[str] = ["*"]
     
-    FREQTRADE_API_SERVER: str
-    FREQTRADE_USERNAME: str
-    FREQTRADE_PASSWORD: str
+    FREQTRADE_API_SERVER: str = "http://freqtrade:8080"
+    FREQTRADE_USERNAME: str = "admin"
+    FREQTRADE_PASSWORD: str = "freqtrader123"
     
     class Config:
         case_sensitive = True

@@ -2,7 +2,11 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
+from app.core.database import engine, Base
 from app.api.routes import api_router
+
+# Create database tables
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -18,4 +22,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(api_router)
+app.include_router(api_router, prefix="/api")
+
+
+@app.get("/")
+def root():
+    return {
+        "message": "Trader Codex API",
+        "version": settings.VERSION,
+        "docs": "/docs"
+    }

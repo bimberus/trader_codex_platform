@@ -2,32 +2,32 @@
 
 Witaj w dokumentacji Trader Codex - platformy do handlu algorytmicznego na rynkach kryptowalut.
 
-## Szybki start
+## 🚀 Wprowadzenie
 
-- [Instalacja](getting-started/installation.md)
-- [Pierwsze kroki](getting-started/quick-start.md)
+- [Funkcje Platformy](features.md) - Szczegółowy opis możliwości systemu.
+- [Szybki start](getting-started/quick-start.md) - Jak uruchomić projekt w 5 minut.
+- [Instalacja](getting-started/installation.md) - Szczegółowa instrukcja instalacji.
 
-## Architektura
+## 📚 API i Integracje
 
-- [Przegląd](architecture/overview.md)
+- [Endpointy API](api/endpoints.md) - Pełna lista endpointów REST API.
+- [WebSocket](api/websockets.md) - Dokumentacja połączeń czasu rzeczywistego.
+- [Uwierzytelnianie](api/authentication.md) - Jak działa system logowania.
+
+## 🏗️ Architektura
+
+- [Przegląd Systemu](architecture/overview.md)
 - [Backend](architecture/backend.md)
 - [Frontend](architecture/frontend.md)
 - [Infrastruktura](architecture/infrastructure.md)
 
-## API
-
-- [Uwierzytelnianie](api/authentication.md)
-- [Strategie](api/strategies.md)
-- [Trading](api/trading.md)
-- [WebSocket](api/websockets.md)
-
-## Przewodnik użytkownika
+## 📖 Przewodniki
 
 - [Panel główny](user-guide/dashboard.md)
 - [Strategie](user-guide/strategies.md)
 - [Trading](user-guide/trading.md)
 
-## Rozwiązywanie problemów
+## 🔧 Pomoc
 
-- [Najczęstsze problemy](troubleshooting/common-issues.md)
+- [Rozwiązywanie problemów](troubleshooting/common-issues.md)
 - [FAQ](troubleshooting/faq.md)
